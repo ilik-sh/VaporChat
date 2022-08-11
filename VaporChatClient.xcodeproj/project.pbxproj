@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58211483289BD7B0009F7CA1 /* WebSocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211482289BD7B0009F7CA1 /* WebSocketService.swift */; };
+		58211486289BD7C4009F7CA1 /* SubmittedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211485289BD7C4009F7CA1 /* SubmittedMessage.swift */; };
+		58211488289BD7D6009F7CA1 /* ChatScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211487289BD7D6009F7CA1 /* ChatScreenViewController.swift */; };
+		5821148A289BD7E3009F7CA1 /* ChatScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211489289BD7E3009F7CA1 /* ChatScreenView.swift */; };
+		5821148C289BD90E009F7CA1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5821148B289BD90E009F7CA1 /* User.swift */; };
+		58211491289ED5D4009F7CA1 /* RecievedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211490289ED5D4009F7CA1 /* RecievedMessage.swift */; };
+		58211493289EDC40009F7CA1 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211492289EDC40009F7CA1 /* MessageCell.swift */; };
+		58211496289FB577009F7CA1 /* WebSocketObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58211495289FB577009F7CA1 /* WebSocketObserver.swift */; };
 		582F2174286DBB8100546F3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F2173286DBB8100546F3A /* AppDelegate.swift */; };
 		582F2176286DBB8100546F3A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F2175286DBB8100546F3A /* SceneDelegate.swift */; };
 		582F2178286DBB8100546F3A /* LoginScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 582F2177286DBB8100546F3A /* LoginScreenViewController.swift */; };
@@ -15,6 +23,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58211482289BD7B0009F7CA1 /* WebSocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketService.swift; sourceTree = "<group>"; };
+		58211485289BD7C4009F7CA1 /* SubmittedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmittedMessage.swift; sourceTree = "<group>"; };
+		58211487289BD7D6009F7CA1 /* ChatScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenViewController.swift; sourceTree = "<group>"; };
+		58211489289BD7E3009F7CA1 /* ChatScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatScreenView.swift; sourceTree = "<group>"; };
+		5821148B289BD90E009F7CA1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		58211490289ED5D4009F7CA1 /* RecievedMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecievedMessage.swift; sourceTree = "<group>"; };
+		58211492289EDC40009F7CA1 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		58211495289FB577009F7CA1 /* WebSocketObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSocketObserver.swift; sourceTree = "<group>"; };
 		582F2170286DBB8100546F3A /* VaporChatClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VaporChatClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		582F2173286DBB8100546F3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		582F2175286DBB8100546F3A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +51,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5821147F289BD729009F7CA1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				58211489289BD7E3009F7CA1 /* ChatScreenView.swift */,
+				58211492289EDC40009F7CA1 /* MessageCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		58211480289BD736009F7CA1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				58211487289BD7D6009F7CA1 /* ChatScreenViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		58211481289BD740009F7CA1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				58211482289BD7B0009F7CA1 /* WebSocketService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		58211484289BD7B5009F7CA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				58211485289BD7C4009F7CA1 /* SubmittedMessage.swift */,
+				58211490289ED5D4009F7CA1 /* RecievedMessage.swift */,
+				5821148B289BD90E009F7CA1 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		58211494289FB565009F7CA1 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				58211495289FB577009F7CA1 /* WebSocketObserver.swift */,
+			);
+			path = Delegate;
+			sourceTree = "<group>";
+		};
 		582F2167286DBB8100546F3A = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +125,8 @@
 		582F2188286EF84D00546F3A /* LoginScreen */ = {
 			isa = PBXGroup;
 			children = (
-				582F218C286EF88C00546F3A /* Views */,
 				582F218B286EF88400546F3A /* Controllers */,
+				582F218C286EF88C00546F3A /* Views */,
 			);
 			path = LoginScreen;
 			sourceTree = "<group>";
@@ -75,6 +134,11 @@
 		582F2189286EF85D00546F3A /* ChatScreen */ = {
 			isa = PBXGroup;
 			children = (
+				58211494289FB565009F7CA1 /* Delegate */,
+				58211484289BD7B5009F7CA1 /* Models */,
+				58211481289BD740009F7CA1 /* Services */,
+				58211480289BD736009F7CA1 /* Controllers */,
+				5821147F289BD729009F7CA1 /* Views */,
 			);
 			path = ChatScreen;
 			sourceTree = "<group>";
@@ -173,8 +237,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58211493289EDC40009F7CA1 /* MessageCell.swift in Sources */,
+				58211483289BD7B0009F7CA1 /* WebSocketService.swift in Sources */,
 				582F218E286EFA3300546F3A /* LoginScreenView.swift in Sources */,
+				5821148A289BD7E3009F7CA1 /* ChatScreenView.swift in Sources */,
+				58211488289BD7D6009F7CA1 /* ChatScreenViewController.swift in Sources */,
 				582F2178286DBB8100546F3A /* LoginScreenViewController.swift in Sources */,
+				5821148C289BD90E009F7CA1 /* User.swift in Sources */,
+				58211491289ED5D4009F7CA1 /* RecievedMessage.swift in Sources */,
+				58211496289FB577009F7CA1 /* WebSocketObserver.swift in Sources */,
+				58211486289BD7C4009F7CA1 /* SubmittedMessage.swift in Sources */,
 				582F2174286DBB8100546F3A /* AppDelegate.swift in Sources */,
 				582F2176286DBB8100546F3A /* SceneDelegate.swift in Sources */,
 			);

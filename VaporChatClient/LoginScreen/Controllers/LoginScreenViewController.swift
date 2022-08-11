@@ -17,6 +17,20 @@ class LoginScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.onLoginAction = {[weak self] in self?.loginAction()}
+    }
+    
+    @objc
+    func loginAction() {
+        print("dsa")
+        let vc = ChatScreenViewController()
+        guard let name = mainView.getUsername() else { return }
+        let user = User(name: name)
+        vc.user = user
+        if navigationController?.topViewController != vc {
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
     }
 
 }

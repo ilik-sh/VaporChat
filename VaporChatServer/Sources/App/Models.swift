@@ -7,7 +7,6 @@ struct SubmittedMessage: Decodable {
 }
 
 struct RecievedMessage: Encodable, Identifiable {
-    let date = Date()
     let id = UUID()
     let message: String
     let user: String

@@ -7,15 +7,23 @@
 
 import UIKit
 
-final class LoginScreenView: UIView{
+class LoginScreenView: UIView{
+    
+    var onLoginAction: (() -> Void)?
     
     override init (frame: CGRect) {
         super.init(frame: frame)
         setupViews()
+        addActions()
+    }
+    
+    required init? (coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     private let backgroundView: UIImageView = {
         let backgroundView = UIImageView(frame: .zero)
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(named: "background")
         backgroundView.contentMode = .scaleAspectFill
         backgroundView.image = image
@@ -24,6 +32,7 @@ final class LoginScreenView: UIView{
     
     private let welcomeLabel: UILabel = {
         let welcomeLabel = UILabel()
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         welcomeLabel.text = "Welcome"
         welcomeLabel.textColor = .white
         welcomeLabel.font = UIFont.boldSystemFont(ofSize: 50)
@@ -32,6 +41,7 @@ final class LoginScreenView: UIView{
 
     private let usernameTextField: UITextField = {
         let textField = UITextField()
+        textField.translatesAutoresizingMaskIntoConstraints = false
         textField.tintColor = .white
         textField.attributedPlaceholder = NSAttributedString(string: "username", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         textField.font = UIFont(name: "System", size: 20)
@@ -41,12 +51,14 @@ final class LoginScreenView: UIView{
     
     private let lineView: UIView = {
         let lineView = UIView()
+        lineView.translatesAutoresizingMaskIntoConstraints = false
         lineView.backgroundColor = .white
         return lineView
     }()
     
     private let loginButton: UIButton = {
         let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .white
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 30
@@ -57,8 +69,17 @@ final class LoginScreenView: UIView{
         return button
     }()
     
-    required init? (coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    func addActions() {
+        loginButton.addTarget(self, action: #selector(loginAction), for: .touchUpInside)
+    }
+    
+    @objc func loginAction() {
+        onLoginAction?()
+    }
+    
+    func getUsername() -> String? {
+        return usernameTextField.text
     }
 }
 
@@ -73,8 +94,6 @@ extension LoginScreenView {
 
     func setupLoginButton() {
         self.addSubview(loginButton)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             loginButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             loginButton.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 100),
@@ -85,9 +104,7 @@ extension LoginScreenView {
     
     func setupUsernameTextField() {
         self.addSubview(usernameTextField)
-        usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         usernameTextField.delegate = self
-        
         NSLayoutConstraint.activate([
             usernameTextField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             usernameTextField.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -50),
@@ -99,8 +116,6 @@ extension LoginScreenView {
     
     func setupLineView() {
         self.addSubview(lineView)
-        lineView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             lineView.centerXAnchor.constraint(equalTo: usernameTextField.centerXAnchor),
             lineView.widthAnchor.constraint(equalTo: usernameTextField.widthAnchor),
@@ -111,8 +126,6 @@ extension LoginScreenView {
     
     func setupBackgroundView() {
         self.insertSubview(backgroundView, at: 0)
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: self.topAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
@@ -123,8 +136,6 @@ extension LoginScreenView {
     
     func setupWelcomeLabel() {
         self.addSubview(welcomeLabel)
-        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         NSLayoutConstraint.activate([
             welcomeLabel.bottomAnchor.constraint(equalTo: usernameTextField.topAnchor, constant: -60),
             welcomeLabel.leftAnchor.constraint(equalTo: usernameTextField.leftAnchor),
@@ -142,5 +153,16 @@ extension LoginScreenView: UITextFieldDelegate {
             self.lineView.alpha = 1
         })
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let maxLength = 20
+        let currentString = (textField.text ?? "") as NSString
+        let newString =  currentString.replacingCharacters(in: range, with: string)
+
+        return newString.count <= maxLength
+    }
+    
 }
+
+
 
